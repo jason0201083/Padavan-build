@@ -32,15 +32,15 @@ jobs:
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
     - name: Clone source code
       run: |
-        git clone --depth=1 https://github.com/immortalwrt/padavan.git /opt/padavan
-        cd /opt/padavan/toolchain-mipsel
+        git clone --depth=1 https://github.com/vb1980/Padavan-KVR.git /opt/Padavan-KVR
+        cd /opt/Padavan-KVR/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
         TNAME: GHL
       run: |
-        cd /opt/padavan/trunk
+        cd /opt/Padavan-KVR/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
         echo "configs/templates/$TNAME.config not found "
         exit 1
