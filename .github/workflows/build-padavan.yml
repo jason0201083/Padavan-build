@@ -32,15 +32,15 @@ jobs:
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
     - name: Clone source code
       run: |
-        git clone --depth=1 https://github.com/vb1980/Padavan-KVR.git /opt/Padavan-KVR
-        cd /opt/Padavan-KVR/toolchain-mipsel
+        git clone --depth=1 https://github.com/keke1023/Padavan.git /opt/Padavan
+        cd /opt/Padavan/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: GHL
+        TNAME: PSG1218
       run: |
-        cd /opt/Padavan-KVR/trunk
+        cd /opt/Padavan/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
         echo "configs/templates/$TNAME.config not found "
         exit 1
@@ -102,5 +102,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: GHL
+        name: PSG1218
         path: /opt/images
